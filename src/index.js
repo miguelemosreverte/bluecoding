@@ -1,13 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import KeyboardSearch from './components/KeywordSearch'
+
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+import { Provider } from 'react-redux'
+import {store} from './app/store'
+
+
+import {GifSearch} from './features/gif_search/GifSearch'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-const render = (className, component) =>
-document.querySelectorAll(className).forEach(function (element) {
-  return ReactDOM.render( component(), element);
-});
-
-
-render('#App', p => <KeyboardSearch keyword = "chesseburgers"/> )
+const rootElement = document.getElementById('root')
+ReactDOM.render(
+  <Provider store={store}>
+    <GifSearch />
+  </Provider>,
+  rootElement
+)
